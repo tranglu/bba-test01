@@ -1,3 +1,4 @@
+// bài 1 - tạo hàm
 const arr = [
     {
         name: "mario", level: 1, health: 400
@@ -9,7 +10,9 @@ const arr = [
         name: "tom", level: 3, health: 350
     },
 ]
-let newArr = arr.map(function (element) {
+
+function createCharacters (arr1){
+    var newArr = arr1.map(function (element) {
     const updatedUserArray = Object.entries(element).map(([key, value]) => {
         if (key === "name") {
             return [key, value.toUpperCase()];
@@ -17,20 +20,24 @@ let newArr = arr.map(function (element) {
             return [key, value * 2];
         } else {
             return [key, value * 3];
-
         }
-
     });
     const updatedUserObject = Object.fromEntries(updatedUserArray);
     return updatedUserObject;
 });
-//console.log(newArr);
+return newArr;
+}
 
-const posibleWinners = newArr.filter(user => user.health > 1000);
+let newArr3 = createCharacters(arr);
+
+console.log(newArr3);
+
+//bài 1 - filter
+const posibleWinners = newArr3.filter(user => user.health > 1000);
 
 console.log(posibleWinners);
 
-
+// bài 2
 const players = [
     { name: "Mario", score: 1000 },
     { name: "Mario2", score: 1003 },
@@ -47,19 +54,16 @@ players.sort((a, b) => b.score - a.score);
 function printLeaderBoard(player) {
     for (let i = 0; i < player.length; i++) {
         if (i === 0) {
-            console.log(` 🥇 ${i + 1} ${player[i].name} - ${player[i].score} pts`)
+            console.log(` 🥇 ${i + 1}. ${player[i].name} - ${player[i].score} pts`)
         }
         else if (i === 1) {
             console.log(` 🥈 ${i + 1}. ${player[i].name} - ${player[i].score} pts`)
         }
-        else if (i ===2) {
-            console.log(` 🥈 ${i + 1} ${player[i].name} - ${player[i].score} pts`)
+        else if (i === 2) {
+            console.log(` 🥉 ${i + 1}. ${player[i].name} - ${player[i].score} pts`)
         } else {
-            console.log(`   ${i + 1} ${player[i].name} - ${player[i].score} pts`)
+            console.log(`   ${i + 1}. ${player[i].name} - ${player[i].score} pts`)
         }
-
     }
-
-
 }
 printLeaderBoard(players);
