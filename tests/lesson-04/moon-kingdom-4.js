@@ -1,25 +1,24 @@
-const characters = [
-    {
-        name: "mario", level: 1, health: 400
-    },
-    {
-        name: "peter", level: 2, health: 100
-    },
-    {
-        name: "tom", level: 3, health: 350
-    },
-]
-function createCharacters(arr1) {
-    var newArr = arr1.map(element => (
+
+function createCharacters() {
+    const characters = [
+        {
+            name: "mario", level: 1, health: 400
+        },
+        {
+            name: "peter", level: 2, health: 100
+        },
+        {
+            name: "tom", level: 3, health: 350
+        },
+    ]
+    const charactersPowerUp = characters.map(element => (
         {
             name: element.name.toUpperCase(),
             level: element.level * 2,
             health: element.health * 3
         })
     );
-    return newArr;
+    const posibleWinners = charactersPowerUp.filter(user => user.health > 1000);
+    return posibleWinners;
 }
-
-const charactersPowerUp = createCharacters(characters);
-
-console.log(charactersPowerUp);
+console.log(createCharacters());

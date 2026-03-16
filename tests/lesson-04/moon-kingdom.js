@@ -1,18 +1,19 @@
 // bài 1 - tạo hàm
-const characters = [
-    {
-        name: "mario", level: 1, health: 400
-    },
-    {
-        name: "peter", level: 2, health: 100
-    },
-    {
-        name: "tom", level: 3, health: 350
-    },
-]
 
-function createCharacters(arr1) {
-    var newArr = arr1.map(function (element) {
+function createCharacters() {
+    const characters = [
+        {
+            name: "mario", level: 1, health: 400
+        },
+        {
+            name: "peter", level: 2, health: 100
+        },
+        {
+            name: "tom", level: 3, health: 350
+        },
+    ]
+
+    const charactersPowerUp = characters.map(function (element) {
         const updatedUserArray = Object.entries(element).map(([key, value]) => {
             if (key === "name") {
                 return [key, value.toUpperCase()];
@@ -25,17 +26,13 @@ function createCharacters(arr1) {
         const updatedUserObject = Object.fromEntries(updatedUserArray);
         return updatedUserObject;
     });
-    return newArr;
+    const posibleWinners = charactersPowerUp.filter(user => user.health > 1000);
+    return posibleWinners;
 }
 
-const charactersPowerUp = createCharacters(characters);
+console.log(createCharacters());
 
-console.log(charactersPowerUp);
 
-//bài 1 - filter
-const posibleWinners = charactersPowerUp.filter(user => user.health > 1000);
-
-console.log(posibleWinners);
 
 // bài 2
 const players = [
@@ -48,10 +45,9 @@ const players = [
     { name: "Mario7", score: 300 },
 ]
 
-players.sort((a, b) => b.score - a.score);
-//console.log(players);
 
 function printLeaderBoard(player) {
+    players.sort((a, b) => b.score - a.score);
     for (let i = 0; i < player.length; i++) {
         if (i === 0) {
             console.log(` 🥇 ${i + 1}. ${player[i].name} - ${player[i].score} pts`)
