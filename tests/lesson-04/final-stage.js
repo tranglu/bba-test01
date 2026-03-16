@@ -1,12 +1,11 @@
-// tính không trùng
+// tính các cặp số hoán vị
 function findPairsDivisibleBy17() {
     let count = 0;
     for (let i = 1; i <= 100; i++) {
         for (let x = 1; x <= 100; x++) {
-            let b = i + x;
-            if (b % 17 === 0) {
+            if ((i + x) % 17 === 0) {
                 count += 1;
-                console.log(`(${i} , ${x}) = ${b}`);
+                console.log(`(${i} , ${x})`);
             }
         }
     }
