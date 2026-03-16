@@ -1,5 +1,5 @@
 // bài 1 - tạo hàm
-const arr = [
+const characters = [
     {
         name: "mario", level: 1, health: 400
     },
@@ -11,29 +11,29 @@ const arr = [
     },
 ]
 
-function createCharacters (arr1){
+function createCharacters(arr1) {
     var newArr = arr1.map(function (element) {
-    const updatedUserArray = Object.entries(element).map(([key, value]) => {
-        if (key === "name") {
-            return [key, value.toUpperCase()];
-        } else if (key === "level") {
-            return [key, value * 2];
-        } else {
-            return [key, value * 3];
-        }
+        const updatedUserArray = Object.entries(element).map(([key, value]) => {
+            if (key === "name") {
+                return [key, value.toUpperCase()];
+            } else if (key === "level") {
+                return [key, value * 2];
+            } else {
+                return [key, value * 3];
+            }
+        });
+        const updatedUserObject = Object.fromEntries(updatedUserArray);
+        return updatedUserObject;
     });
-    const updatedUserObject = Object.fromEntries(updatedUserArray);
-    return updatedUserObject;
-});
-return newArr;
+    return newArr;
 }
 
-let newArr3 = createCharacters(arr);
+const charactersPowerUp = createCharacters(characters);
 
-console.log(newArr3);
+console.log(charactersPowerUp);
 
 //bài 1 - filter
-const posibleWinners = newArr3.filter(user => user.health > 1000);
+const posibleWinners = charactersPowerUp.filter(user => user.health > 1000);
 
 console.log(posibleWinners);
 
