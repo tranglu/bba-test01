@@ -1,4 +1,4 @@
-let powerUp = "mushroom";
+const powerUp = "mushroom";
 let effect = '';
 
 if (powerUp === "mushroom") {
